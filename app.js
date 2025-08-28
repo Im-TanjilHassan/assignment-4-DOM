@@ -75,7 +75,11 @@ const services = [
 
 const cardContainer = document.getElementById("cardContainer");
 const callHistoryContainer = document.getElementById("callHistoryContainer");
+const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+const coin = document.getElementById("coin");
+let reactCount = document.getElementById("reactCount");
 
+//load card dynamically
 services.forEach(service => {
   const card = document.createElement("div");
   card.classList.add("space-y-3", "py-3", "px-4", "rounded-lg", "shadow-xl/20");
@@ -98,13 +102,12 @@ services.forEach(service => {
   cardContainer.appendChild(card)
 })
 
+//call btn, copy btn and heart icon functionality
 cardContainer.addEventListener("click", function (e) {
   if (e.target.closest(".callBtn")) {
     const id = e.target.getAttribute("data-id");
 
     let singleService = services.find((service) => service.id == id);
-
-    const coin = document.getElementById("coin");
 
     if (Number(coin.innerText > 0)) {
       coin.innerText = Number(coin.innerText) - 20;
@@ -145,11 +148,20 @@ cardContainer.addEventListener("click", function (e) {
   }
   else if (e.target.closest(".copyBtn")) {
     console.log("copy btn clicked");
-    
+    return;
   }
   else if (e.target.closest("#reactBtn")) {
-    let reactCount = document.getElementById("reactCount");
     reactCount.innerText = Number(reactCount.innerText) + 1;
     return;
   }
 });
+
+//clear history functionality
+clearHistoryBtn.addEventListener("click", function () {
+  callHistoryContainer.innerHTML = ``;
+
+  coin.innerText = 100;
+
+  reactCount.innerText = 0;
+
+})
