@@ -91,40 +91,65 @@ services.forEach(service => {
   <p class="text-2xl font-bold">${service.phone}</p>
   <span class="bg-gray-200 text-gray-600 px-4 py-1 rounded-2xl">${service.category}</span>
   <div class="mt-5 w-full flex justify-center items-center gap-3">
-    <button class="border border-gray-300 hover:bg-gray-300  w-[50%] rounded-md py-2 text-gray-600 cursor-pointer" data-copyBtn=${service.id}><i class="fa-solid fa-copy"></i> Copy</button>
-    <button class="bg-[#00A63E] hover:bg-[#009135] text-white  w-[50%] py-2 rounded-md cursor-pointer" data-id=${service.id}><i class="fa-solid fa-phone"></i> Call</button>
+    <button class="copyBtn border border-gray-300 hover:bg-gray-300  w-[50%] rounded-md py-2 text-gray-600 cursor-pointer" data-copyBtn=${service.id}><i class="fa-solid fa-copy"></i> Copy</button>
+    <button class="callBtn bg-[#00A63E] hover:bg-[#009135] text-white  w-[50%] py-2 rounded-md cursor-pointer" data-id=${service.id}><i class="fa-solid fa-phone pointer-events-none"></i> Call</button>
   </div>
   `;
-
   cardContainer.appendChild(card)
-  
 })
 
 cardContainer.addEventListener("click", function (e) {
-  if (e.target.tagName === "BUTTON") {
-    
-    const id = e.target.getAttribute("data-id")
-    
-    let singleService = services.find(service => service.id == id)
+  if (e.target.closest(".callBtn")) {
+    const id = e.target.getAttribute("data-id");
 
-    const callHistoryCard = document.createElement("div")
-    callHistoryCard.classList.add("flex", "justify-between", "items-center", "bg-gray-200", "p-3", "rounded-xl")
+    let singleService = services.find((service) => service.id == id);
 
-    callHistoryCard.innerHTML = `
+    const coin = document.getElementById("coin");
+
+    if (Number(coin.innerText > 0)) {
+      coin.innerText = Number(coin.innerText) - 20;
+      // \u{1F4DE} this is phone icons keyboard shortcut
+
+      alert(
+        `\u{1F4DE} calling ${singleService.serviceType} ${singleService.phone}...`
+      );
+
+      if (Number(coin.innerText) == 20) {
+        alert("❗ Next will be your last call to place!!!");
+      }
+      const callHistoryCard = document.createElement("div");
+      callHistoryCard.classList.add(
+        "flex",
+        "justify-between",
+        "items-center",
+        "bg-gray-200",
+        "p-3",
+        "rounded-xl"
+      );
+
+      callHistoryCard.innerHTML = `
     <div>
     <p class="font-bold">${singleService.serviceTitle}</p>
     <p class="text-gray-400">${singleService.phone}</p>
     </div>
     <p>${new Date().toLocaleTimeString()}</p>
-    `
-    callHistoryContainer.appendChild(callHistoryCard)
-
+    `;
+      callHistoryContainer.appendChild(callHistoryCard);
+    } else if (Number(coin.innerText == 0)) {
+      alert(
+        "\u274C You don’t have sufficient coins to place a call. A minimum of 20 coins is required"
+      );
+      return;
+    }
+    return;
+  }
+  else if (e.target.closest(".copyBtn")) {
+    console.log("copy btn clicked");
     
   }
-  else if (e.target.tagName === "I") {
+  else if (e.target.closest("#reactBtn")) {
     let reactCount = document.getElementById("reactCount");
     reactCount.innerText = Number(reactCount.innerText) + 1;
+    return;
   }
-  
-})
-
+});
