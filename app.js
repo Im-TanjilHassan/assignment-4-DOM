@@ -25,7 +25,7 @@ const services = [
   },
   {
     id: 4,
-    img: "/assets/emergency.png",
+    img: "/assets/ambulance.png",
     serviceTitle: "Ambulance Service",
     serviceType: "Ambulance",
     phone: "1994-999999",
@@ -57,7 +57,7 @@ const services = [
   },
   {
     id: 8,
-    img: "/assets/emergency.png",
+    img: "/assets/brac.png",
     serviceTitle: "Brac Helpline",
     serviceType: "Brac",
     phone: "16445",
@@ -65,7 +65,7 @@ const services = [
   },
   {
     id: 9,
-    img: "/assets/emergency.png",
+    img: "/assets/Bangladesh-Railway.png",
     serviceTitle: "Bangladesh Railway Helpline ",
     serviceType: "Bangladesh Railway",
     phone: "163",
@@ -77,7 +77,8 @@ const cardContainer = document.getElementById("cardContainer");
 const callHistoryContainer = document.getElementById("callHistoryContainer");
 const clearHistoryBtn = document.getElementById("clearHistoryBtn");
 const coin = document.getElementById("coin");
-let reactCount = document.getElementById("reactCount");
+const reactCount = document.getElementById("reactCount");
+const copyCount = document.getElementById("copyCount");
 
 //load card dynamically
 services.forEach(service => {
@@ -95,7 +96,7 @@ services.forEach(service => {
   <p class="text-2xl font-bold">${service.phone}</p>
   <span class="bg-gray-200 text-gray-600 px-4 py-1 rounded-2xl">${service.category}</span>
   <div class="mt-5 w-full flex justify-center items-center gap-3">
-    <button class="copyBtn border border-gray-300 hover:bg-gray-300  w-[50%] rounded-md py-2 text-gray-600 cursor-pointer" data-copyBtn=${service.id}><i class="fa-solid fa-copy"></i> Copy</button>
+    <button class="copyBtn border border-gray-300 hover:bg-gray-300  w-[50%] rounded-md py-2 text-gray-600 cursor-pointer" data-copyBtnId=${service.id}><i class="fa-solid fa-copy pointer-events-none"></i> Copy</button>
     <button class="callBtn bg-[#00A63E] hover:bg-[#009135] text-white  w-[50%] py-2 rounded-md cursor-pointer" data-id=${service.id}><i class="fa-solid fa-phone pointer-events-none"></i> Call</button>
   </div>
   `;
@@ -147,7 +148,19 @@ cardContainer.addEventListener("click", function (e) {
     return;
   }
   else if (e.target.closest(".copyBtn")) {
-    console.log("copy btn clicked");
+    const id = e.target.getAttribute("data-copyBtnId");
+
+    let singleService = services.find((service) => service.id == id);
+
+    navigator.clipboard.writeText(singleService.phone)
+      .then(() => {
+        alert(`service number copied: ${singleService.phone}`);
+      })
+      .catch((err) => {
+        alert("Failed to copy service number:", err)
+    })
+
+    copyCount.innerText = Number(copyCount.innerText) + 1;
     return;
   }
   else if (e.target.closest("#reactBtn")) {

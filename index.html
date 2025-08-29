@@ -13,21 +13,24 @@
 <body>
     <header>
         <!--navbar-->
-        <div class="navbar bg-base-100 shadow-sm flex justify-between items-center px-20 py-5">
+        <div class="navbar bg-base-100 shadow-sm flex justify-between items-center px-5 lg:px-20 py-5">
             <div class="flex justify-center items-center space-x-5">
-                <img class="w-14 h-14" src="assets/logo.png" alt="">
-                <h2 class="text-[#006747] text-xl font-bold">Emergency <br> Service</h2>
+                <img class="lg:w-14 lg:h-14 w-9 h-9" src="assets/logo.png" alt="">
+                <h2 class="text-[#006747] lg:text-xl text-md font-bold">Emergency <br> Service</h2>
             </div>
-            <div class="flex justify-center items-center space-x-5">
-                <div class="flex justify-center items-center px-5 py-2 bg-gray-300 space-x-3 rounded-3xl">
+            <div class="lg:flex justify-center items-center space-x-5">
+                <div class="hidden lg:flex justify-center items-center px-5 py-2 bg-gray-300 space-x-3 rounded-3xl">
                     <p id="reactCount" class="font-bold">0</p>
                     <img class="w-5 h-5" src="assets/heart.png" alt="">
                 </div>
-                <div class="flex justify-center items-center px-5 py-2 bg-gray-300 space-x-3 rounded-3xl">
+                <div class="hidden lg:flex justify-center items-center px-5 py-2 bg-gray-300 space-x-3 rounded-3xl">
                     <p id="coin" class="font-bold">100</p>
                     <img class="w-5 h-5" src="assets/coin.png" alt="">
                 </div>
-                <button class="px-5 py-2 text-white bg-[#00A63E] rounded-3xl">0 Copy</button>
+                <button class="hidden lg:inline-block px-5 py-2 text-white bg-[#00A63E] rounded-3xl"><span id="copyCount">0</span> Copy</button>
+                <span class="lg:hidden">
+                    <i class="fa-solid fa-bars"></i>
+                </span>
             </div>
         </div>
         <!--banner-->
@@ -46,13 +49,13 @@
         </section>
     </header>
     <main>
-        <section class="flex justify-center items-start py-16 px-10 gap-3">
+        <section class="lg:flex justify-center items-start space-y-5 py-16 lg:px-10 px-5 gap-3">
             <!--cards-->
-            <div id="cardContainer" class="grid grid-cols-3 gap-5  w-[72%] p-3 h-[100vh]">
+            <div id="cardContainer" class="lg:grid grid-cols-3 lg:gap-5 space-y-5  lg:w-[72%] lg:p-3 lg:h-[100%]">
 
             </div>
             <!--call history-->
-            <div class="p-4 shadow-xl/20 w-[28%] h-[100vh] rounded-lg overflow-y-scroll">
+            <div class="p-4 shadow-xl/20 lg:w-[28%] lg:h-[62rem] h-[30rem] rounded-lg overflow-y-scroll">
                 <div class="flex justify-between items-center mb-10">
                     <div class="space-x-3 flex justify-center items-center">
                         <i class="fa-regular fa-clock"></i>
