@@ -9,7 +9,7 @@ const services = [
   },
   {
     id: 2,
-    img: "/assets/police.png",
+    img: "./assets/police.png",
     serviceTitle: "Police Helpline Number",
     serviceType: "Police",
     phone: "999",
@@ -17,7 +17,7 @@ const services = [
   },
   {
     id: 3,
-    img: "/assets/fire-service.png",
+    img: "./assets/fire-service.png",
     serviceTitle: "Fire Service Number",
     serviceType: "Fire Service",
     phone: "999",
@@ -25,7 +25,7 @@ const services = [
   },
   {
     id: 4,
-    img: "/assets/ambulance.png",
+    img: "./assets/ambulance.png",
     serviceTitle: "Ambulance Service",
     serviceType: "Ambulance",
     phone: "1994-999999",
@@ -33,7 +33,7 @@ const services = [
   },
   {
     id: 5,
-    img: "/assets/emergency.png",
+    img: "./assets/emergency.png",
     serviceTitle: "Women & Child Helpline",
     serviceType: "Women & Child Helpline",
     phone: "109",
@@ -41,7 +41,7 @@ const services = [
   },
   {
     id: 6,
-    img: "/assets/emergency.png",
+    img: "./assets/emergency.png",
     serviceTitle: "Anti-Corruption Helpline",
     serviceType: "Anti-Corruption",
     phone: "106",
@@ -49,7 +49,7 @@ const services = [
   },
   {
     id: 7,
-    img: "/assets/emergency.png",
+    img: "./assets/emergency.png",
     serviceTitle: "Electricity Helpline",
     serviceType: "Electricity Outage",
     phone: "16216",
@@ -57,7 +57,7 @@ const services = [
   },
   {
     id: 8,
-    img: "/assets/brac.png",
+    img: "./assets/brac.png",
     serviceTitle: "Brac Helpline",
     serviceType: "Brac",
     phone: "16445",
@@ -65,7 +65,7 @@ const services = [
   },
   {
     id: 9,
-    img: "/assets/Bangladesh-Railway.png",
+    img: "./assets/Bangladesh-Railway.png",
     serviceTitle: "Bangladesh Railway Helpline ",
     serviceType: "Bangladesh Railway",
     phone: "163",
